@@ -7,9 +7,9 @@ import com.example.rickandmorty.domain.model.HeroDataDetails
 @Entity
 data class HeroEntity(
     @PrimaryKey(autoGenerate = false)
+    val id: Int,
     val name: String,
     val gender: String,
-    val id: Int
 )
 
 fun HeroEntity.toHeroDataDetails(): HeroDataDetails {

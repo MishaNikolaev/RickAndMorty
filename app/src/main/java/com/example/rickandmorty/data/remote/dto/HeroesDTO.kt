@@ -5,8 +5,7 @@ import com.example.rickandmorty.domain.model.HeroDataDetails
 import com.google.gson.annotations.SerializedName
 
 data class HeroesAllDto(
-    val heroes: List<HeroesDataDetailsDto>,
-    val name:String
+    val results: List<HeroesDataDetailsDto>
 )
 
 data class HeroesDataDetailsDto(

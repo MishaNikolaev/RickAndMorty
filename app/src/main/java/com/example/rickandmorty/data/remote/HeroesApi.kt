@@ -8,17 +8,16 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface HeroesApi {
-    @GET("api/character/")
+    @GET("/api/character/")
     suspend fun getHeroes(
-        @Query("id", encoded = false) id: Int,
-        @Query("name", encoded = false) name: String
+        @Query("page") page:Int
     ): HeroesAllDto
 }
 
 object RetrofitInstanceHero {
     val api: HeroesApi by lazy {
         Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/")
+            .baseUrl("https://rickandmortyapi.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(HeroesApi::class.java)

@@ -14,14 +14,16 @@ class RepositoryImplHero @Inject constructor(private val api: HeroesApi, private
 
     override suspend fun getHeroes(): List<HeroDataDetails> {
         try{
-            val response = api.getHeroes(1, "name")
-            val heroesEntity = response.heroes.map {
+            Log.d(TAG, "getHeroes: 1")
+            val response = api.getHeroes(page = 1)
+            Log.d(TAG, "getHeroes: ${response}")
+            val heroesEntity = response.results.map {
                 it.toHeroEntity()
             }
             heroesDao.insertAll(heroes = heroesEntity)
         }
         catch (e: Exception){
-            Log.d(TAG, "getHeroes: $e")
+            Log.d(TAG, "getHeroes: Error $e")
         }
         val heroesEntity = heroesDao.getAll()
 
