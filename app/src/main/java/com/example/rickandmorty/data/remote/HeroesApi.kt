@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface HeroesApi {
     @GET("/api/character/")
     suspend fun getHeroes(
-        @Query("page") page:Int
+        @Query("?page=19") page:Int
     ): HeroesAllDto
 }
 
